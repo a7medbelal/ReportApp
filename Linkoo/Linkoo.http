@@ -1,0 +1,6 @@
+@Linkoo_HostAddress = http://localhost:5193
+
+GET {{Linkoo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
