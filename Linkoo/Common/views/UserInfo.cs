@@ -1,4 +1,4 @@
-﻿namespace Linkoo.Common.views
+﻿namespace ReportApp.Common.views
 {
     public class UserInfo
     {
@@ -7,5 +7,7 @@
         public string UserName { get; set; }
 
         public string Email { get; set; }
+
+        public string Role { get; set; }
     }
 }

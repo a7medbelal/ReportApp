@@ -1,4 +1,4 @@
-﻿namespace Linkoo.Common.views
+﻿namespace ReportApp.Common.views
 {
     public class UserInfoProvider
     {

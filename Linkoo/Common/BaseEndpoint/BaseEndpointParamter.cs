@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using Linkoo.Common.views;
+using ReportApp.Common.views;
 using MediatR;
 
-namespace Linkoo.Common.BaseEndpoint
+namespace ReportApp.Common.BaseEndpoint
 {
     public class BaseEndpointParamter<TRequest>
     {

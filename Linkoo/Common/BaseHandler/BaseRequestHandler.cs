@@ -1,12 +1,12 @@
 ﻿
-using Linkoo.Common.BaseHandler;
-using Linkoo.Common.Helper;
-using Linkoo.Common.views;
-using Linkoo.Domain.Repository;
-using Linkoo.Model;
+using ReportApp.Common.BaseHandler;
+using ReportApp.Common.Helper;
+using ReportApp.Common.views;
+using ReportApp.Domain.Repository;
+using ReportApp.Model;
 using MediatR;
 
-namespace Linko.Common.BaseHandler
+namespace Reportapp.Common.BaseHandler
 {
     public abstract class BaseRequestHandler<TRequest, TResponse, TEntity> : IRequestHandler<TRequest, TResponse>
         where TRequest : IRequest<TResponse>

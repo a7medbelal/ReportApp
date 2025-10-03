@@ -1,11 +1,11 @@
 ﻿
-using Linkoo.Common.Helper;
-using Linkoo.Common.views;
-using Linkoo.Domain.Repository;
-using Linkoo.Model;
+using ReportApp.Common.Helper;
+using ReportApp.Common.views;
+using ReportApp.Domain.Repository;
+using ReportApp.Model;
 using MediatR;
 
-namespace Linkoo.Common.BaseHandler
+namespace ReportApp.Common.BaseHandler
 {
     public class BaseRequestHandlerParamters<TEntity>
     where TEntity : BaseModel

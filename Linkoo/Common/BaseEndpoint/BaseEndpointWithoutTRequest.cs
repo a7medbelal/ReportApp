@@ -1,8 +1,8 @@
 ﻿
-using Linkoo.Common.views;
+using ReportApp.Common.views;
 using MediatR;
 
-namespace Linkoo.Common.BaseEndPoint
+namespace ReportApp.Common.BaseEndPoint
 {
     public class BaseEndpointWithoutTRequest
     {

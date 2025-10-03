@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using ReportApp.Model;
+using ReportApp.Model.Enum;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
-namespace Linkoo.Common.Helper
+namespace ReportApp.Common.Helper
 {
     public class TokenHelper
     {
@@ -16,7 +19,7 @@ namespace Linkoo.Common.Helper
         }
 
 
-        public async Task<string> GenerateToken(string userId, string? role)
+        public async Task<string> GenerateToken(string userId , Role role, string name )
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtSetting.SecretKey);
@@ -26,8 +29,10 @@ namespace Linkoo.Common.Helper
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-                    new Claim("roleType" , role.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, userId),
+                    new Claim("roleType" , ((int)role).ToString()),
+                    new Claim(ClaimTypes.Name, name) 
+
 
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
@@ -38,5 +43,18 @@ namespace Linkoo.Common.Helper
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+        public async Task<RefreshToken> GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return new RefreshToken
+            {
+                Token = Convert.ToBase64String(randomNumber),
+                ExpiresOn = DateTime.UtcNow.AddDays(7), // مثلاً أسبوع
+                CreatedOn = DateTime.UtcNow
+            };
+        }
+
     }
 }

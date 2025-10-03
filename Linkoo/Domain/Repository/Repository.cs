@@ -1,15 +1,15 @@
-﻿using Linkoo.Model;
+﻿using ReportApp.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
-namespace Linkoo.Domain.Repository
+namespace ReportApp.Domain.Repository
 {
     public class Repository<Entity> : IRepository<Entity> where Entity : Model.BaseModel
     {
             protected Context _context;
             private readonly DbSet<Entity> _dbSet;
-            private readonly string[] immutableProps = { nameof(BaseModel.Id), nameof(BaseModel.CreatedBy), nameof(BaseModel.CreatedAt) };
+            private readonly string[] immutableProps = { nameof(BaseModel.Id), nameof(BaseModel.Createdby), nameof(BaseModel.CreatedAt) };
             public Repository(Context context )
             {
                 _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -18,7 +18,8 @@ namespace Linkoo.Domain.Repository
 
             public async Task AddAsync(Entity entity)
             {
-              entity.CreatedAt = DateTime.UtcNow;
+              entity.CreatedAt = DateTime.Now;
+            
               await _dbSet.AddAsync(entity);    
             }
 
@@ -59,7 +60,7 @@ namespace Linkoo.Domain.Repository
                return _dbSet.Where(x => !x.IsDeleted);
             }
 
-            public async Task<Entity> GetByIdAsync(int id)
+            public async Task<Entity> GetByIdAsync(Guid id)
             {
                 return await Get(x => x.Id == id).FirstOrDefaultAsync(); 
             }
@@ -113,5 +114,10 @@ namespace Linkoo.Domain.Repository
             {
                 throw new NotImplementedException();
             }
+
+        public async Task OldUpdateAsync(Entity entity)
+        {
+            _dbSet.Update(entity);
+        }
     }
 }

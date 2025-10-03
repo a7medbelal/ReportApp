@@ -1,10 +1,13 @@
 ﻿using FluentValidation;
-using Linkoo.Common.Enum;
-using Linkoo.Common.views;
+using ReportApp.Common.Enum;
+using ReportApp.Common.views;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Linkoo.Common.BaseEndpoint
+namespace ReportApp.Common.BaseEndpoint
 {
+  
+    [ApiController]
     public class BaseEndpoint<TRequest , TResponse>
     {
 

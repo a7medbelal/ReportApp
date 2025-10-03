@@ -1,18 +1,19 @@
 ﻿using Autofac;
 using FluentValidation;
-using Linkoo.Common.BaseEndpoint;
-using Linkoo.Common.BaseEndPoint;
-using Linkoo.Common.BaseHandler;
-using Linkoo.Common.Helper;
-using Linkoo.Common.Helper.PasswordServices;
-using Linkoo.Common.views;
-using Linkoo.Domain;
-using Linkoo.Domain.Repository;
+using ReportApp.Common.BaseEndpoint;
+using ReportApp.Common.BaseEndPoint;
+using ReportApp.Common.BaseHandler;
+using ReportApp.Common.Helper;
+using ReportApp.Common.Helper.PasswordServices;
+using ReportApp.Common.views;
+using ReportApp.Domain;
+using ReportApp.Domain.Repository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using ReportApp.Features.Common;
 
-namespace Linkoo.Configuration
+namespace ReportApp.Configuration
 {
     public class ApplicationModule : Autofac.Module
     {
@@ -119,6 +120,9 @@ namespace Linkoo.Configuration
                .SingleInstance();
 
 
+            builder.RegisterType<NoOpValidator<Unit>>()
+              .As<IValidator<Unit>>()
+              .SingleInstance();
 
         }
     }

@@ -1,6 +1,6 @@
-﻿using Linkoo.Common.Enum;
+﻿using ReportApp.Common.Enum;
 
-namespace Linkoo.Common.views
+namespace ReportApp.Common.views
 {
     public record RequestResult<T>(T data, bool isSuccess, string message, ErrorCode errorCode)
     {

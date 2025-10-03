@@ -1,4 +1,4 @@
-﻿namespace Linkoo.Common.Helper
+﻿namespace ReportApp.Common.Helper
 {
     public class JWTSetting
     {

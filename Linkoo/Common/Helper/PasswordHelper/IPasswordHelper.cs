@@ -1,4 +1,4 @@
-﻿namespace Linkoo.Common.Helper.PasswordServices
+﻿namespace ReportApp.Common.Helper.PasswordServices
 {
     public interface IPasswordHelper
     {

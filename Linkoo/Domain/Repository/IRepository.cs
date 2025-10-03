@@ -1,11 +1,11 @@
-﻿using Linkoo.Model;
+﻿using ReportApp.Model;
 using System.Linq.Expressions;
 
-namespace Linkoo.Domain.Repository
+namespace ReportApp.Domain.Repository
 {
     public interface IRepository<Entity> where Entity : BaseModel
     {
-       Task<Entity> GetByIdAsync(int id);
+       Task<Entity> GetByIdAsync(Guid id);
        Task  AddAsync(Entity entity);
         Task<bool> UpdateAsync(Entity entity, params string[] proprties);
        Task DeleteAsync(Entity entity);
@@ -16,5 +16,6 @@ namespace Linkoo.Domain.Repository
        Task SaveChangesAsync();
        Task AddRangeAsync(IEnumerable<Entity> entities);
        Task UpdateRangeAsync(IEnumerable<Entity> entities);
+        Task OldUpdateAsync(Entity entity);
     }
 }

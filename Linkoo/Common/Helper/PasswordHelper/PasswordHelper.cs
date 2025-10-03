@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Cryptography;
 
-namespace  Linkoo.Common.Helper.PasswordServices
+namespace  ReportApp.Common.Helper.PasswordServices
 {
         public class PasswordHelper : IPasswordHelper
     {
